@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="155.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="157.0" prefWidth="344.0">
+         <center>
+            <AnchorPane prefHeight="166.0" prefWidth="344.0" style="-fx-background-color: linear-gradient(to right, #FC354C, purple);" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="94.0" layoutY="25.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: #b993d6;" text="CADASTRAR">
+                     <font>
+                        <Font name="Ink Free" size="16.0" />
+                     </font>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow blurType="ONE_PASS_BOX" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Button>
+                  <Button layoutX="94.0" layoutY="90.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: #b993d6;" text="EDITAR">
+                     <font>
+                        <Font name="Ink Free" size="16.0" />
+                     </font>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow blurType="ONE_PASS_BOX" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Button>
+                  <Label layoutX="9.0" layoutY="125.0" text="&lt;&lt; ">
+                     <font>
+                        <Font name="Ink Free" size="18.0" />
+                     </font>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

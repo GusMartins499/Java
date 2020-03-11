@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PontoFinalController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4dd51" height="370.0" layoutX="15.0" layoutY="16.0" opacity="0.89" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="570.0" />
+      <Label fx:id="lblUsuario" alignment="CENTER" layoutX="124.0" layoutY="26.0" prefHeight="29.0" prefWidth="333.0" text="lblUsuario" textFill="#363535">
+         <font>
+            <Font name="Ink Free" size="27.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label alignment="CENTER" layoutX="42.0" layoutY="94.0" prefHeight="44.0" prefWidth="258.0" text="VOCÊ CONSEGUIU " textFill="#363535">
+         <font>
+            <Font name="Ink Free" size="27.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label alignment="CENTER" layoutX="389.0" layoutY="94.0" prefHeight="44.0" prefWidth="136.0" text="PONTOS" textFill="#363535">
+         <font>
+            <Font name="Ink Free" size="27.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label fx:id="lblPonto" alignment="CENTER" layoutX="313.0" layoutY="83.0" prefHeight="44.0" prefWidth="62.0" text="XXX" textFill="#363535">
+         <font>
+            <Font name="Ink Free" size="41.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Button layoutX="213.0" layoutY="273.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: linear-gradient(to right, #f21515, #905560); -fx-border-color: black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 2;">
+         <effect>
+            <Lighting diffuseConstant="1.36">
+               <bumpInput>
+                  <Shadow blurType="ONE_PASS_BOX" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+      <Label layoutX="248.0" layoutY="277.0" prefHeight="35.0" prefWidth="130.0" text="MENU">
+         <font>
+            <Font name="Ink Free" size="27.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Button layoutX="213.0" layoutY="274.0" mnemonicParsing="false" onAction="#fechaJanela" opacity="0.01" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: linear-gradient(to right, #f21515, #905560); -fx-border-color: black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 2;">
+         <effect>
+            <Lighting diffuseConstant="1.36">
+               <bumpInput>
+                  <Shadow blurType="ONE_PASS_BOX" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

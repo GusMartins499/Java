@@ -1,0 +1,10 @@
+package application
+
+import javafx.scene.layout.AnchorPane
+import application.PrincipalController
+
+component Principal controlledby PrincipalController {
+	AnchorPane {
+		//TODO Add Nodes
+	}
+}

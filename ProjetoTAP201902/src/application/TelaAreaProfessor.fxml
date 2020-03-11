@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaAreaProfessorController">
+   <children>
+      <BorderPane fx:id="pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <AnchorPane prefHeight="149.0" prefWidth="330.0" style="-fx-background-color: linear-gradient(to right, #FC354C, purple);" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="txtLogin" alignment="CENTER" layoutX="24.0" layoutY="30.0" opacity="0.68" prefHeight="30.0" prefWidth="218.0" promptText="Informe seu login de professor" style="-fx-background-radius: 25;" />
+                  <Label layoutX="264.0" layoutY="32.0" prefHeight="27.0" prefWidth="68.0" text="Usuário" textFill="#171717">
+                     <font>
+                        <Font name="Calibri Light" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="264.0" layoutY="85.0" prefHeight="27.0" prefWidth="64.0" text="Senha" textFill="#0a0a0a">
+                     <font>
+                        <Font name="Calibri Light" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="112.0" onMouseClicked="#FecharJanela" text="&lt;&lt; ">
+                     <font>
+                        <Font name="Ink Free" size="18.0" />
+                     </font>
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Label>
+                  <PasswordField fx:id="txtSenha" alignment="CENTER" layoutX="24.0" layoutY="84.0" onKeyReleased="#verificaLogin" opacity="0.68" prefHeight="30.0" prefWidth="218.0" promptText="Informe a senha padrão" style="-fx-background-radius: 25;" />
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

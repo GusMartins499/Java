@@ -1,0 +1,6 @@
+TEST,CI,1,1,1
+ALUNO,DISCIPLINA,3,3,3
+alunoa,dasljn,2,2,2
+asgfahi,jfbhisdb,2,2,2
+fjdsbfhbfsdhb,fdsfhisdbfsdbiy,2,2,2
+aluno,discplina,3,3,3

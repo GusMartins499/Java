@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -42,6 +43,12 @@ public class PrincipalController {
 	private ImageView imgView2;
 	@FXML
 	private ImageView imgView3;
+	@FXML
+	private TextField txtPorcentagemRed;
+	@FXML
+	private TextField txtPorcentagemGreen;
+	@FXML
+	private TextField txtPorcentagemBlue;
 
 	private Image img1;
 	private Image img2;
@@ -117,8 +124,45 @@ public class PrincipalController {
 	}
 
 	@FXML
+	public void cinzaPonderada() {
+		img3 = PDI.cinzaMediaAritmetica(img1, Integer.parseInt(txtPorcentagemRed.getText()),
+				Integer.parseInt(txtPorcentagemGreen.getText()), Integer.parseInt(txtPorcentagemBlue.getText()));
+		atualizaImagem3();
+	}
+
+	@FXML
 	public void cinzaAritmetica() {
 		img3 = PDI.cinzaMediaAritmetica(img1, 0, 0, 0);
 		atualizaImagem3();
 	}
+
+	// @FXML
+	// public void cinzaAritmetica() {
+	// int porcentagemR = 0, porcentagemG = 0, porcentagemB = 0;
+	// if (txtPorcentagemRed.getText() == "" || txtPorcentagemRed.getText() == null)
+	// {
+	// porcentagemR = 0;
+	// } else {
+	// porcentagemR = Integer.parseInt(txtPorcentagemRed.getText());
+	// }
+	//
+	// if (txtPorcentagemGreen.getText() == "" || txtPorcentagemGreen.getText() ==
+	// null) {
+	// porcentagemG = 0;
+	// } else {
+	// porcentagemG = Integer.parseInt(txtPorcentagemGreen.getText());
+	// }
+	//
+	// if (txtPorcentagemBlue.getText() == "" || txtPorcentagemBlue.getText() ==
+	// null) {
+	// porcentagemB = 0;
+	// } else {
+	// porcentagemB = Integer.parseInt(txtPorcentagemBlue.getText());
+	// }
+	//
+	// img3 = PDI.cinzaMediaAritmetica(img1, porcentagemR, porcentagemG,
+	// porcentagemB);
+	// atualizaImagem3();
+	//
+	// }
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,6 +50,10 @@ public class PrincipalController {
 	private TextField txtPorcentagemGreen;
 	@FXML
 	private TextField txtPorcentagemBlue;
+	@FXML
+	private Slider slider;
+	@FXML
+	private Button btnNegativa;
 
 	private Image img1;
 	private Image img2;
@@ -133,6 +138,19 @@ public class PrincipalController {
 	@FXML
 	public void cinzaAritmetica() {
 		img3 = PDI.cinzaMediaAritmetica(img1, 0, 0, 0);
+		atualizaImagem3();
+	}
+	
+	@FXML
+	public void limiarizacao() {
+		img3 = PDI.limiarizacao(img1, slider.getValue()/255.00);
+		System.out.println(slider.getValue());
+		atualizaImagem3();
+	}
+	
+	@FXML
+	public void negativa() {
+		img3 = PDI.negativa(img1);
 		atualizaImagem3();
 	}
 

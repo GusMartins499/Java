@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
@@ -77,12 +78,21 @@
                                                 </Button>
                                              </children>
                                           </VBox>
-                                       </children></AnchorPane>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding></AnchorPane>
                               </content>
                             </TitledPane>
                             <TitledPane animated="false" text="Limiarização">
                               <content>
-                                <AnchorPane />
+                                <AnchorPane>
+                                       <children>
+                                          <Slider fx:id="slider" layoutX="4.6" layoutY="19.6" max="250.0" onMouseReleased="#limiarizacao" showTickLabels="true" showTickMarks="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding></AnchorPane>
                               </content>
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -90,7 +100,13 @@
                             </TitledPane>
                             <TitledPane animated="false" text="Negativa">
                               <content>
-                                <AnchorPane />
+                                <AnchorPane>
+                                       <children>
+                                          <Button mnemonicParsing="false" onMouseClicked="#negativa" text="Aplicar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding></AnchorPane>
                               </content>
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -98,13 +114,19 @@
                             </TitledPane>
                               <TitledPane animated="false" layoutX="10.0" layoutY="60.0" text="Adição / Subtração">
                                  <content>
-                                    <AnchorPane />
+                                    <AnchorPane>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding></AnchorPane>
                                  </content>
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                               </TitledPane>
                           </panes>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
                         </Accordion>
                      </children>
                      <VBox.margin>

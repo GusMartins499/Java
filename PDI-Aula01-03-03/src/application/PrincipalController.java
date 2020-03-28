@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -54,6 +55,14 @@ public class PrincipalController {
 	private Slider slider;
 	@FXML
 	private Button btnNegativa;
+	@FXML
+	private Button btnRuido;
+	@FXML
+	private RadioButton rbVizinho3;
+	@FXML
+	private RadioButton rbVizinhoC;
+	@FXML
+	private RadioButton rbVizinhoX;
 
 	private Image img1;
 	private Image img2;
@@ -140,18 +149,34 @@ public class PrincipalController {
 		img3 = PDI.cinzaMediaAritmetica(img1, 0, 0, 0);
 		atualizaImagem3();
 	}
-	
+
 	@FXML
 	public void limiarizacao() {
-		img3 = PDI.limiarizacao(img1, slider.getValue()/255.00);
+		img3 = PDI.limiarizacao(img1, slider.getValue() / 255.00);
 		System.out.println(slider.getValue());
 		atualizaImagem3();
 	}
-	
+
 	@FXML
 	public void negativa() {
 		img3 = PDI.negativa(img1);
 		atualizaImagem3();
+	}
+
+	@FXML
+	public void ruido() {
+		if (rbVizinho3.isSelected()) {
+			img3 = PDI.ruidos(img1, 1);
+			atualizaImagem3();
+		}
+		if (rbVizinhoC.isSelected()) {
+			img3 = PDI.ruidos(img1, 2);
+			atualizaImagem3();
+		}
+		if (rbVizinhoX.isSelected()) {
+			img3 = PDI.ruidos(img1, 3);
+			atualizaImagem3();
+		}
 	}
 
 	// @FXML

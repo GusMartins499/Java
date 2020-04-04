@@ -37,13 +37,13 @@
                <children>
                   <HBox>
                      <children>
-                        <Accordion>
+                        <Accordion fx:id="AccordionMenu">
                           <panes>
                             <TitledPane animated="false" text="Tons de cinza">
                               <content>
                                 <AnchorPane>
                                        <children>
-                                          <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
                                                 <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cinzaAritmetica" text="Média aritmética" textAlignment="JUSTIFY">
                                                    <VBox.margin>
@@ -104,7 +104,7 @@
                               <content>
                                 <AnchorPane>
                                        <children>
-                                          <Button mnemonicParsing="false" onMouseClicked="#negativa" text="Aplicar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Button fx:id="btnNegativa" mnemonicParsing="false" onMouseClicked="#negativa" text="Aplicar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -119,7 +119,54 @@
                                     <AnchorPane>
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding></AnchorPane>
+                                       </padding>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label text="\% Transparência imagem 1">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Slider fx:id="sliderTransparencia1" onMouseReleased="#getValueSlider1" showTickLabels="true" showTickMarks="true">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Slider>
+                                                <Separator prefWidth="200.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Separator>
+                                                <Label layoutX="15.0" layoutY="15.0" text="\% Transparência imagem 2">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Slider fx:id="sliderTransparencia2" layoutX="15.0" layoutY="42.0" onMouseReleased="#getValueSlider2" showTickLabels="true" showTickMarks="true">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Slider>
+                                                <Separator prefWidth="200.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Separator>
+                                                <Button fx:id="btnAdicao" alignment="CENTER" mnemonicParsing="false" onAction="#adicao" prefHeight="50.0" prefWidth="130.0" text="Adição" textAlignment="JUSTIFY">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Separator prefWidth="200.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Separator>
+                                                <Button fx:id="btnSubtracao" alignment="CENTER" layoutX="28.0" layoutY="191.0" mnemonicParsing="false" onAction="#subtracao" prefHeight="50.0" prefWidth="130.0" text="Subtração" textAlignment="JUSTIFY" />
+                                             </children>
+                                          </VBox>
+                                       </children></AnchorPane>
                                  </content>
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -132,7 +179,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
                                        <children>
-                                          <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
                                                 <RadioButton fx:id="rbVizinhoC" mnemonicParsing="false" text="VIZINHOS EM CRUZ">
                                                    <VBox.margin>
@@ -201,7 +248,7 @@
                      <children>
                         <HBox>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#abreImagem1" text="Abrir imagem 1">
+                              <Button fx:id="btnImg1" mnemonicParsing="false" onAction="#abreImagem1" text="Abrir imagem 1">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -213,7 +260,7 @@
                         </HBox>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                           <content>
-                            <AnchorPane>
+                            <AnchorPane fx:id="paneImg1">
                                  <children>
                                     <ImageView fx:id="imgView1" fitHeight="150.0" fitWidth="200.0" onMouseMoved="#rasterImg" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
@@ -234,7 +281,7 @@
                      <children>
                         <HBox>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#abreImagem2" text="Abrir imagem 2">
+                              <Button fx:id="btnImg2" mnemonicParsing="false" onAction="#abreImagem2" text="Abrir imagem 2">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -246,7 +293,7 @@
                         </HBox>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                           <content>
-                            <AnchorPane>
+                            <AnchorPane fx:id="paneImg2">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -267,7 +314,7 @@
                      <children>
                         <HBox>
                            <children>
-                              <Button mnemonicParsing="false" text="Salvar">
+                              <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#salvar" text="Salvar">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -279,7 +326,7 @@
                         </HBox>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                           <content>
-                            <AnchorPane>
+                            <AnchorPane fx:id="paneImgResultado">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -333,7 +380,7 @@
          <right>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" text="Histograma">
+                  <Button fx:id="btnHistograma" mnemonicParsing="false" text="Histograma">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>

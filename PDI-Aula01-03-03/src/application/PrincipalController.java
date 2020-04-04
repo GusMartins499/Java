@@ -1,7 +1,12 @@
 package application;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
@@ -63,6 +68,14 @@ public class PrincipalController {
 	private RadioButton rbVizinhoC;
 	@FXML
 	private RadioButton rbVizinhoX;
+	@FXML
+	private Slider sliderTransparencia1;
+	@FXML
+	private Slider sliderTransparencia2;
+	@FXML
+	private Button btnAdicao;
+	@FXML
+	private Button btnSubtracao;
 
 	private Image img1;
 	private Image img2;
@@ -153,7 +166,6 @@ public class PrincipalController {
 	@FXML
 	public void limiarizacao() {
 		img3 = PDI.limiarizacao(img1, slider.getValue() / 255.00);
-		System.out.println(slider.getValue());
 		atualizaImagem3();
 	}
 
@@ -179,33 +191,47 @@ public class PrincipalController {
 		}
 	}
 
-	// @FXML
-	// public void cinzaAritmetica() {
-	// int porcentagemR = 0, porcentagemG = 0, porcentagemB = 0;
-	// if (txtPorcentagemRed.getText() == "" || txtPorcentagemRed.getText() == null)
-	// {
-	// porcentagemR = 0;
-	// } else {
-	// porcentagemR = Integer.parseInt(txtPorcentagemRed.getText());
-	// }
-	//
-	// if (txtPorcentagemGreen.getText() == "" || txtPorcentagemGreen.getText() ==
-	// null) {
-	// porcentagemG = 0;
-	// } else {
-	// porcentagemG = Integer.parseInt(txtPorcentagemGreen.getText());
-	// }
-	//
-	// if (txtPorcentagemBlue.getText() == "" || txtPorcentagemBlue.getText() ==
-	// null) {
-	// porcentagemB = 0;
-	// } else {
-	// porcentagemB = Integer.parseInt(txtPorcentagemBlue.getText());
-	// }
-	//
-	// img3 = PDI.cinzaMediaAritmetica(img1, porcentagemR, porcentagemG,
-	// porcentagemB);
-	// atualizaImagem3();
-	//
-	// }
+	@FXML
+	public void adicao() {
+		double transparenciaImagem1 = getValueSlider1();
+		double transparenciaImagem2 = getValueSlider2();
+		img3 = PDI.adicao(img1, img2, transparenciaImagem1, transparenciaImagem2);
+		atualizaImagem3();
+	}
+
+	@FXML
+	public void subtracao() {
+		img3 = PDI.subtracao(img1, img2);
+		atualizaImagem3();
+	}
+
+	@FXML
+	public double getValueSlider1() {
+		return sliderTransparencia1.getValue() / 100;
+	}
+
+	@FXML
+	public double getValueSlider2() {
+		return sliderTransparencia2.getValue() / 100;
+	}
+
+	@FXML
+	public void salvar() {
+		if (img3 != null) {
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("imagem", "*.png"));
+			fileChooser
+					.setInitialDirectory((new File("C:\\Users\\Gustavo\\Pictures\\Processamento digital de imagem\\")));
+			File file = fileChooser.showSaveDialog(null);
+			if (file != null) {
+				BufferedImage bImg = SwingFXUtils.fromFXImage(img3, null);
+				try {
+					ImageIO.write(bImg, "PNG", file);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 }

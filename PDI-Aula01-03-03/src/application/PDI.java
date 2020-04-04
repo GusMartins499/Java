@@ -217,4 +217,60 @@ public class PDI {
 		}
 		return v;
 	}
+
+	public static Image adicao(Image img1, Image img2, double indiceTransparenia1, double indiceTransparenia2) {
+		int w1 = (int) img1.getWidth();
+		int h1 = (int) img1.getHeight();
+		int w2 = (int) img2.getWidth();
+		int h2 = (int) img2.getHeight();
+		int w = Math.min(w1, w2);
+		int h = Math.min(h1, h2);
+		PixelReader pr1 = img1.getPixelReader();
+		PixelReader pr2 = img2.getPixelReader();
+		WritableImage wi = new WritableImage(w, h);
+		PixelWriter pw = wi.getPixelWriter();
+		for (int i = 1; i < w; i++) {
+			for (int j = 1; j < h; j++) {
+				Color corImg1 = pr1.getColor(i, j);
+				Color corImg2 = pr2.getColor(i, j);
+				double r = (corImg1.getRed() * indiceTransparenia1) + (corImg2.getRed() * indiceTransparenia2);
+				double g = (corImg1.getGreen() * indiceTransparenia1) + (corImg2.getGreen() * indiceTransparenia2);
+				double b = (corImg1.getBlue() * indiceTransparenia1) + (corImg2.getBlue() * indiceTransparenia2);
+				r = r > 1 ? 1 : r;
+				g = g > 1 ? 1 : g;
+				b = b > 1 ? 1 : b;
+				Color newCor = new Color(r, g, b, 1);
+				pw.setColor(i, j, newCor);
+			}
+		}
+		return wi;
+	}
+
+	public static Image subtracao(Image img1, Image img2) {
+		int w1 = (int) img1.getWidth();
+		int h1 = (int) img1.getHeight();
+		int w2 = (int) img2.getWidth();
+		int h2 = (int) img2.getHeight();
+		int w = Math.min(w1, w2);
+		int h = Math.min(h1, h2);
+		PixelReader pr1 = img1.getPixelReader();
+		PixelReader pr2 = img2.getPixelReader();
+		WritableImage wi = new WritableImage(w, h);
+		PixelWriter pw = wi.getPixelWriter();
+		for (int i = 1; i < w; i++) {
+			for (int j = 1; j < h; j++) {
+				Color oldCor1 = pr1.getColor(i, j);
+				Color oldCor2 = pr2.getColor(i, j);
+				double r = (oldCor1.getRed()) - (oldCor2.getRed());
+				double g = (oldCor1.getGreen()) - (oldCor2.getGreen());
+				double b = (oldCor1.getBlue()) - (oldCor2.getBlue());
+				r = r < 0 ? 0 : r;
+				g = g < 0 ? 0 : g;
+				b = b < 0 ? 0 : b;
+				Color newCor = new Color(r, g, b, oldCor1.getOpacity());
+				pw.setColor(i, j, newCor);
+			}
+		}
+		return wi;
+	}
 }

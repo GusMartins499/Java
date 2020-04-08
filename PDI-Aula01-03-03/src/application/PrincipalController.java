@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import util.Mensagem;
 
 public class PrincipalController {
 	@FXML
@@ -80,6 +81,7 @@ public class PrincipalController {
 	private Image img1;
 	private Image img2;
 	private Image img3;
+	private int PontoXInicio, PontoYInicio, PontoXFim, PontoYFim;
 
 	@FXML
 	public void initialize() {
@@ -97,9 +99,14 @@ public class PrincipalController {
 	}
 
 	public void atualizaImagem3() {
-		imgView3.setImage(img3);
-		imgView3.setFitWidth(img3.getWidth());
-		imgView3.setFitHeight(img3.getHeight());
+		try {
+			imgView3.setImage(img3);
+			imgView3.setFitWidth(img3.getWidth());
+			imgView3.setFitHeight(img3.getHeight());
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Selecione uma imagem !",
+					"Não foi possível carregar a imagem com o efeito escolhido", AlertType.ERROR);
+		}
 	}
 
 	private Image abreImagem(ImageView imageView, Image image) {
@@ -152,42 +159,70 @@ public class PrincipalController {
 
 	@FXML
 	public void cinzaPonderada() {
-		img3 = PDI.cinzaMediaAritmetica(img1, Integer.parseInt(txtPorcentagemRed.getText()),
-				Integer.parseInt(txtPorcentagemGreen.getText()), Integer.parseInt(txtPorcentagemBlue.getText()));
-		atualizaImagem3();
+		try {
+			img3 = PDI.cinzaMediaAritmetica(img1, Integer.parseInt(txtPorcentagemRed.getText()),
+					Integer.parseInt(txtPorcentagemGreen.getText()), Integer.parseInt(txtPorcentagemBlue.getText()));
+			atualizaImagem3();
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !", AlertType.ERROR);
+		} catch (NumberFormatException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Preencha os campos %R - %G - %B", AlertType.ERROR);
+		}
 	}
 
 	@FXML
 	public void cinzaAritmetica() {
-		img3 = PDI.cinzaMediaAritmetica(img1, 0, 0, 0);
-		atualizaImagem3();
+		try {
+			img3 = PDI.cinzaMediaAritmetica(img1, 0, 0, 0);
+			atualizaImagem3();
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro desafio1", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !",
+					AlertType.ERROR);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	public void limiarizacao() {
-		img3 = PDI.limiarizacao(img1, slider.getValue() / 255.00);
-		atualizaImagem3();
+		try {
+			img3 = PDI.limiarizacao(img1, slider.getValue() / 255.00);
+			atualizaImagem3();
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro desafio1", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !",
+					AlertType.ERROR);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	public void negativa() {
-		img3 = PDI.negativa(img1);
-		atualizaImagem3();
+		try {
+			img3 = PDI.negativa(img1);
+			atualizaImagem3();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	public void ruido() {
-		if (rbVizinho3.isSelected()) {
-			img3 = PDI.ruidos(img1, 1);
-			atualizaImagem3();
-		}
-		if (rbVizinhoC.isSelected()) {
-			img3 = PDI.ruidos(img1, 2);
-			atualizaImagem3();
-		}
-		if (rbVizinhoX.isSelected()) {
-			img3 = PDI.ruidos(img1, 3);
-			atualizaImagem3();
+		try {
+			if (rbVizinho3.isSelected()) {
+				img3 = PDI.ruidos(img1, 1);
+				atualizaImagem3();
+			}
+			if (rbVizinhoC.isSelected()) {
+				img3 = PDI.ruidos(img1, 2);
+				atualizaImagem3();
+			}
+			if (rbVizinhoX.isSelected()) {
+				img3 = PDI.ruidos(img1, 3);
+				atualizaImagem3();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -217,20 +252,54 @@ public class PrincipalController {
 
 	@FXML
 	public void salvar() {
-		if (img3 != null) {
-			FileChooser fileChooser = new FileChooser();
-			fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("imagem", "*.png"));
-			fileChooser
-					.setInitialDirectory((new File("C:\\Users\\Gustavo\\Pictures\\Processamento digital de imagem\\")));
-			File file = fileChooser.showSaveDialog(null);
-			if (file != null) {
-				BufferedImage bImg = SwingFXUtils.fromFXImage(img3, null);
-				try {
-					ImageIO.write(bImg, "PNG", file);
-				} catch (IOException e) {
-					e.printStackTrace();
+		try {
+			if (img3 != null) {
+				FileChooser fileChooser = new FileChooser();
+				fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("imagem", "*.png"));
+				fileChooser.setInitialDirectory(
+						(new File("C:\\Users\\Gustavo\\Pictures\\Processamento digital de imagem\\")));
+				File file = fileChooser.showSaveDialog(null);
+				if (file != null) {
+					BufferedImage bImg = SwingFXUtils.fromFXImage(img3, null);
+					try {
+						ImageIO.write(bImg, "PNG", file);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					Mensagem.exibeMsg("Salvar imagem", "Sucesso ao salvar imagem", "Concluído", AlertType.CONFIRMATION);
 				}
 			}
+		} catch (Exception e) {
+
+		}
+
+	}
+
+	@FXML
+	public void mousePressed(MouseEvent evt) {
+		PontoXInicio = (int) evt.getX();
+		PontoYInicio = (int) evt.getY();
+	}
+
+	@FXML
+	public void mouseRelease(MouseEvent evt) {
+		PontoXFim = (int) evt.getX();
+		PontoYFim = (int) evt.getY();
+		moldura();
+	}
+
+	@FXML
+	public void moldura() {
+		try {
+			img3 = PDI.RetanguloImagemComMouse(img1, PontoXInicio, PontoXFim, PontoYInicio, PontoYFim);
+			atualizaImagem3();
+
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro desafio1", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !",
+					AlertType.ERROR);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

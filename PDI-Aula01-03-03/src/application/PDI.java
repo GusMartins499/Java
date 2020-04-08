@@ -1,11 +1,14 @@
 package application;
 
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+
 import util.Constantes;
+import util.Mensagem;
 import util.Pixel;
 
 public class PDI {
@@ -31,6 +34,9 @@ public class PDI {
 				}
 			}
 			return wi;
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !", AlertType.ERROR);
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -63,6 +69,9 @@ public class PDI {
 				}
 			}
 			return wi;
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !", AlertType.ERROR);
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -87,6 +96,10 @@ public class PDI {
 				}
 			}
 			return wi;
+
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !", AlertType.ERROR);
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -122,6 +135,9 @@ public class PDI {
 				}
 			}
 			return wi;
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !", AlertType.ERROR);
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -219,58 +235,136 @@ public class PDI {
 	}
 
 	public static Image adicao(Image img1, Image img2, double indiceTransparenia1, double indiceTransparenia2) {
-		int w1 = (int) img1.getWidth();
-		int h1 = (int) img1.getHeight();
-		int w2 = (int) img2.getWidth();
-		int h2 = (int) img2.getHeight();
-		int w = Math.min(w1, w2);
-		int h = Math.min(h1, h2);
-		PixelReader pr1 = img1.getPixelReader();
-		PixelReader pr2 = img2.getPixelReader();
+		try {
+			int w1 = (int) img1.getWidth();
+			int h1 = (int) img1.getHeight();
+			int w2 = (int) img2.getWidth();
+			int h2 = (int) img2.getHeight();
+			int w = Math.min(w1, w2);
+			int h = Math.min(h1, h2);
+			PixelReader pr1 = img1.getPixelReader();
+			PixelReader pr2 = img2.getPixelReader();
+			WritableImage wi = new WritableImage(w, h);
+			PixelWriter pw = wi.getPixelWriter();
+			for (int i = 1; i < w; i++) {
+				for (int j = 1; j < h; j++) {
+					Color corImg1 = pr1.getColor(i, j);
+					Color corImg2 = pr2.getColor(i, j);
+					double r = (corImg1.getRed() * indiceTransparenia1) + (corImg2.getRed() * indiceTransparenia2);
+					double g = (corImg1.getGreen() * indiceTransparenia1) + (corImg2.getGreen() * indiceTransparenia2);
+					double b = (corImg1.getBlue() * indiceTransparenia1) + (corImg2.getBlue() * indiceTransparenia2);
+					r = r > 1 ? 1 : r;
+					g = g > 1 ? 1 : g;
+					b = b > 1 ? 1 : b;
+					Color newCor = new Color(r, g, b, 1);
+					pw.setColor(i, j, newCor);
+				}
+			}
+			return wi;
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !", AlertType.ERROR);
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static Image subtracao(Image img1, Image img2) {
+		try {
+			int w1 = (int) img1.getWidth();
+			int h1 = (int) img1.getHeight();
+			int w2 = (int) img2.getWidth();
+			int h2 = (int) img2.getHeight();
+			int w = Math.min(w1, w2);
+			int h = Math.min(h1, h2);
+			PixelReader pr1 = img1.getPixelReader();
+			PixelReader pr2 = img2.getPixelReader();
+			WritableImage wi = new WritableImage(w, h);
+			PixelWriter pw = wi.getPixelWriter();
+			for (int i = 1; i < w; i++) {
+				for (int j = 1; j < h; j++) {
+					Color oldCor1 = pr1.getColor(i, j);
+					Color oldCor2 = pr2.getColor(i, j);
+					double r = (oldCor1.getRed()) - (oldCor2.getRed());
+					double g = (oldCor1.getGreen()) - (oldCor2.getGreen());
+					double b = (oldCor1.getBlue()) - (oldCor2.getBlue());
+					r = r < 0 ? 0 : r;
+					g = g < 0 ? 0 : g;
+					b = b < 0 ? 0 : b;
+					Color newCor = new Color(r, g, b, oldCor1.getOpacity());
+					pw.setColor(i, j, newCor);
+				}
+			}
+			return wi;
+		} catch (NullPointerException e) {
+			Mensagem.exibeMsg("Erro", "Hummm, algo deu errado !", "Selecione primeiro uma imagem !", AlertType.ERROR);
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static Image RetanguloImagemComMouse(Image image, int PontoXInicio, int PontoXFim, int PontoYInicio,
+			int PontoYFim) {
+		int w = (int) image.getWidth();
+		int h = (int) image.getHeight();
+		PixelReader pr1 = image.getPixelReader();
 		WritableImage wi = new WritableImage(w, h);
 		PixelWriter pw = wi.getPixelWriter();
-		for (int i = 1; i < w; i++) {
-			for (int j = 1; j < h; j++) {
-				Color corImg1 = pr1.getColor(i, j);
-				Color corImg2 = pr2.getColor(i, j);
-				double r = (corImg1.getRed() * indiceTransparenia1) + (corImg2.getRed() * indiceTransparenia2);
-				double g = (corImg1.getGreen() * indiceTransparenia1) + (corImg2.getGreen() * indiceTransparenia2);
-				double b = (corImg1.getBlue() * indiceTransparenia1) + (corImg2.getBlue() * indiceTransparenia2);
-				r = r > 1 ? 1 : r;
-				g = g > 1 ? 1 : g;
-				b = b > 1 ? 1 : b;
-				Color newCor = new Color(r, g, b, 1);
-				pw.setColor(i, j, newCor);
+
+		for (int i = 0; i < w; i++) {
+			for (int j = 0; j < h; j++) {
+				Color corA = pr1.getColor(i, j);
+				pw.setColor(i, j, corA);
+			}
+		}
+		// linha horizontal de cima
+		for (int k = PontoXInicio; k < PontoXFim; k++) {
+			Color corA = pr1.getColor(k, PontoYInicio);
+			if (k <= PontoXFim) {
+				double R = (0);
+				double G = (1);
+				double B = (0);
+				Color newColor = new Color(R, G, B, corA.getOpacity());
+				pw.setColor(k, PontoYInicio, newColor);
+			}
+		}
+		// linha horizontal debaixo
+		for (int k = PontoXInicio; k < PontoXFim; k++) {
+			Color corA = pr1.getColor(k, PontoYFim);
+			if (k <= PontoXFim) {
+				double R = (0);
+				double G = (1);
+				double B = (0);
+				Color newColor = new Color(R, G, B, corA.getOpacity());
+				pw.setColor(k, PontoYFim, newColor);
+			}
+		}
+		// linha vertical esquerda
+		for (int k = PontoYInicio; k < PontoYFim; k++) {
+			Color corA = pr1.getColor(PontoXInicio, k);
+			if (k <= PontoYFim) {
+				double R = (0);
+				double G = (1);
+				double B = (0);
+				Color newColor = new Color(R, G, B, corA.getOpacity());
+				pw.setColor(PontoXInicio, k, newColor);
+			}
+		}
+		// linha vertical direita
+		for (int k = PontoYInicio; k < PontoYFim; k++) {
+			Color corA = pr1.getColor(PontoXFim, k);
+			if (k <= PontoYFim) {
+				double R = (0);
+				double G = (1);
+				double B = (0);
+				Color newColor = new Color(R, G, B, corA.getOpacity());
+				pw.setColor(PontoXFim, k, newColor);
 			}
 		}
 		return wi;
 	}
 
-	public static Image subtracao(Image img1, Image img2) {
-		int w1 = (int) img1.getWidth();
-		int h1 = (int) img1.getHeight();
-		int w2 = (int) img2.getWidth();
-		int h2 = (int) img2.getHeight();
-		int w = Math.min(w1, w2);
-		int h = Math.min(h1, h2);
-		PixelReader pr1 = img1.getPixelReader();
-		PixelReader pr2 = img2.getPixelReader();
-		WritableImage wi = new WritableImage(w, h);
-		PixelWriter pw = wi.getPixelWriter();
-		for (int i = 1; i < w; i++) {
-			for (int j = 1; j < h; j++) {
-				Color oldCor1 = pr1.getColor(i, j);
-				Color oldCor2 = pr2.getColor(i, j);
-				double r = (oldCor1.getRed()) - (oldCor2.getRed());
-				double g = (oldCor1.getGreen()) - (oldCor2.getGreen());
-				double b = (oldCor1.getBlue()) - (oldCor2.getBlue());
-				r = r < 0 ? 0 : r;
-				g = g < 0 ? 0 : g;
-				b = b < 0 ? 0 : b;
-				Color newCor = new Color(r, g, b, oldCor1.getOpacity());
-				pw.setColor(i, j, newCor);
-			}
-		}
-		return wi;
-	}
 }

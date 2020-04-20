@@ -225,6 +225,49 @@
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="Equalização" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Button fx:id="equalizacao" mnemonicParsing="false" onAction="#equalizacao" prefHeight="40.0" prefWidth="125.0" text="Aplicar" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </padding>
+                                          </Button>
+                                          <Separator prefWidth="200.0">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Separator>
+                                          <Label text="Equalização Válida" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Button fx:id="equalizacaoValidos" mnemonicParsing="false" onAction="#equalizacaoValida" prefHeight="40.0" prefWidth="125.0" text="Aplicar" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </padding>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
                               </AnchorPane>
                            </content>
                            <padding>
@@ -400,7 +443,7 @@
          <right>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnHistograma" mnemonicParsing="false" text="Histograma">
+                  <Button fx:id="btnHistograma" mnemonicParsing="false" onAction="#abreModalHistograma" text="Histograma">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>

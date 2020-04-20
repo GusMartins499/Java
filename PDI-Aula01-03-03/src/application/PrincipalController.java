@@ -5,8 +5,14 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -20,6 +26,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import pdi.PDI;
 import util.Mensagem;
 
 public class PrincipalController {
@@ -77,6 +85,10 @@ public class PrincipalController {
 	private Button btnAdicao;
 	@FXML
 	private Button btnSubtracao;
+	@FXML
+	private Button equalizacao;
+	@FXML
+	private Button equalizacaoValidos;
 
 	private Image img1;
 	private Image img2;
@@ -301,6 +313,45 @@ public class PrincipalController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@FXML
+	public void abreModalHistograma(ActionEvent event) {
+		try {
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Histograma.fxml"));
+			Parent root = loader.load();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Histograma");
+			// stage.initModality(Modality.WINDOW_MODAL);
+			stage.setResizable(true);
+			//stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+			//stage.setMaximized(true);
+			stage.show();
+
+			HistogramaController controller = (HistogramaController) loader.getController();
+
+			if (img1 != null)
+				pdi.PDI.getGrafico(img1, controller.grafico1);
+			if (img2 != null)
+				pdi.PDI.getGrafico(img2, controller.grafico2);
+			if (img3 != null)
+				pdi.PDI.getGrafico(img3, controller.grafico3);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void equalizacao() {
+		img3 = pdi.PDI.equalizacaoHistograma(img1, true);
+		atualizaImagem3();
+	}
+
+	@FXML
+	public void equalizacaoValida() {
+		img3 = pdi.PDI.equalizacaoHistograma(img1, false);
+		atualizaImagem3();
 	}
 
 }

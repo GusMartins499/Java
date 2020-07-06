@@ -1,5 +1,9 @@
 package pdi;
 
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
@@ -237,25 +241,28 @@ public class PDI {
 		return v;
 	}
 
-	public static Image adicao(Image img1, Image img2, double indiceTransparenia1, double indiceTransparenia2) {
+	public static Image adicao(Image imagem1, Image imagem2, double indiceTransparenia1, double indiceTransparenia2) {
 		try {
-			int w1 = (int) img1.getWidth();
-			int h1 = (int) img1.getHeight();
-			int w2 = (int) img2.getWidth();
-			int h2 = (int) img2.getHeight();
+			int w1 = (int) imagem1.getWidth();
+			int h1 = (int) imagem1.getHeight();
+			int w2 = (int) imagem2.getWidth();
+			int h2 = (int) imagem2.getHeight();
 			int w = Math.min(w1, w2);
 			int h = Math.min(h1, h2);
-			PixelReader pr1 = img1.getPixelReader();
-			PixelReader pr2 = img2.getPixelReader();
+			PixelReader pr1 = imagem1.getPixelReader();
+			PixelReader pr2 = imagem2.getPixelReader();
 			WritableImage wi = new WritableImage(w, h);
 			PixelWriter pw = wi.getPixelWriter();
 			for (int i = 1; i < w; i++) {
 				for (int j = 1; j < h; j++) {
-					Color corImg1 = pr1.getColor(i, j);
-					Color corImg2 = pr2.getColor(i, j);
-					double r = (corImg1.getRed() * indiceTransparenia1) + (corImg2.getRed() * indiceTransparenia2);
-					double g = (corImg1.getGreen() * indiceTransparenia1) + (corImg2.getGreen() * indiceTransparenia2);
-					double b = (corImg1.getBlue() * indiceTransparenia1) + (corImg2.getBlue() * indiceTransparenia2);
+					Color corimagem1 = pr1.getColor(i, j);
+					Color corimagem2 = pr2.getColor(i, j);
+					double r = (corimagem1.getRed() * indiceTransparenia1)
+							+ (corimagem2.getRed() * indiceTransparenia2);
+					double g = (corimagem1.getGreen() * indiceTransparenia1)
+							+ (corimagem2.getGreen() * indiceTransparenia2);
+					double b = (corimagem1.getBlue() * indiceTransparenia1)
+							+ (corimagem2.getBlue() * indiceTransparenia2);
 					r = r > 1 ? 1 : r;
 					g = g > 1 ? 1 : g;
 					b = b > 1 ? 1 : b;
@@ -273,16 +280,16 @@ public class PDI {
 		}
 	}
 
-	public static Image subtracao(Image img1, Image img2) {
+	public static Image subtracao(Image imagem1, Image imagem2) {
 		try {
-			int w1 = (int) img1.getWidth();
-			int h1 = (int) img1.getHeight();
-			int w2 = (int) img2.getWidth();
-			int h2 = (int) img2.getHeight();
+			int w1 = (int) imagem1.getWidth();
+			int h1 = (int) imagem1.getHeight();
+			int w2 = (int) imagem2.getWidth();
+			int h2 = (int) imagem2.getHeight();
 			int w = Math.min(w1, w2);
 			int h = Math.min(h1, h2);
-			PixelReader pr1 = img1.getPixelReader();
-			PixelReader pr2 = img2.getPixelReader();
+			PixelReader pr1 = imagem1.getPixelReader();
+			PixelReader pr2 = imagem2.getPixelReader();
 			WritableImage wi = new WritableImage(w, h);
 			PixelWriter pw = wi.getPixelWriter();
 			for (int i = 1; i < w; i++) {
@@ -371,9 +378,9 @@ public class PDI {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void getGrafico(Image img, BarChart<String, Number> grafico) {
+	public static void getGrafico(Image imagem, BarChart<String, Number> grafico) {
 		// HISTOGRAMA ÚNICO
-		// int[] histograma = histogramaUnico(img);
+		// int[] histograma = histogramaUnico(imagem);
 		// XYChart.Series valor = new XYChart.Series();
 		// for (int i = 0; i < histograma.length; i++) {
 		// valor.getData().add(new XYChart.Data(i + "", histograma[i]));
@@ -381,9 +388,9 @@ public class PDI {
 		// grafico.getData().addAll(valor);
 
 		// HISTOGRAMA POR CANAL
-		int[] histR = histograma(img, 1);
-		int[] histG = histograma(img, 2);
-		int[] histB = histograma(img, 3);
+		int[] histR = histograma(imagem, 1);
+		int[] histG = histograma(imagem, 2);
+		int[] histB = histograma(imagem, 3);
 		XYChart.Series vlrR = new XYChart.Series();
 		XYChart.Series vlrG = new XYChart.Series();
 		XYChart.Series vlrB = new XYChart.Series();
@@ -407,11 +414,11 @@ public class PDI {
 
 	}
 
-	public static int[] histograma(Image img, int i) {
+	public static int[] histograma(Image imagem, int i) {
 		int valorCanal[] = new int[256];
-		PixelReader pr = img.getPixelReader();
-		double w = (int) img.getWidth();
-		double h = (int) img.getHeight();
+		PixelReader pr = imagem.getPixelReader();
+		double w = (int) imagem.getWidth();
+		double h = (int) imagem.getHeight();
 
 		if (i == 1) {
 			for (int j = 1; j < w; j++) {
@@ -437,32 +444,17 @@ public class PDI {
 		return valorCanal;
 	}
 
-	// public static int[] histogramaUnico(Image img) {
-	// int qt[] = new int[256];
-	// PixelReader pr = img.getPixelReader();
-	// int w = (int) img.getWidth();
-	// int h = (int) img.getHeight();
-	// for (int i = 0; i < w; i++) {
-	// for (int j = 0; j < h; j++) {
-	// qt[(int) (pr.getColor(i, j).getRed() * 255)]++;
-	// qt[(int) (pr.getColor(i, j).getGreen() * 255)]++;
-	// qt[(int) (pr.getColor(i, j).getBlue() * 255)]++;
-	// }
-	// }
-	// return qt;
-	// }
-
-	public static Image equalizacaoHistograma(Image img, boolean todos) {
-		//equalizacao valida
-		int w = (int) img.getWidth();
-		int h = (int) img.getHeight();
-		PixelReader pr = img.getPixelReader();
+	public static Image equalizacaoHistograma(Image imagem, boolean todos) {
+		// equalizacao valida
+		int w = (int) imagem.getWidth();
+		int h = (int) imagem.getHeight();
+		PixelReader pr = imagem.getPixelReader();
 		WritableImage wi = new WritableImage(w, h);
 		PixelWriter pw = wi.getPixelWriter();
 
-		int[] hR = histograma(img, 1); // 1=red 2=green 3=blue
-		int[] hG = histograma(img, 2);
-		int[] hB = histograma(img, 3);
+		int[] hR = histograma(imagem, 1); // 1=red 2=green 3=blue
+		int[] hG = histograma(imagem, 2);
+		int[] hB = histograma(imagem, 3);
 
 		int[] histAcR = histogramaAc(hR); // não tem código, implementar o histograma acumulado
 		int[] histAcG = histogramaAc(hG);
@@ -476,8 +468,8 @@ public class PDI {
 		double minR = pontoMin(hR);
 		double minG = pontoMin(hG);
 		double minB = pontoMin(hB);
-		
-		//equalização
+
+		// equalização
 		if (todos) {
 			qtTonsRed = 255;
 			qtTonsGreen = 255;
@@ -540,4 +532,115 @@ public class PDI {
 		return qt;
 	}
 
+	public static Image questao1(Image imagem, Double quad1, Double quad2) {
+		int w = (int) imagem.getWidth();
+		int h = (int) imagem.getHeight();
+
+		PixelReader pr = imagem.getPixelReader();
+		WritableImage wi = new WritableImage(w, h);
+		PixelWriter pw = wi.getPixelWriter();
+
+		for (int i = 0; i < w; i++) {
+			for (int j = 0; j < h; j++) {
+				Color color = pr.getColor(i, j);
+				pw.setColor(i, j, color);
+			}
+		}
+		if (quad1 == 1.0 || quad2 == 1.0) {
+			// InvertePrimeiroQuadrante
+			for (int i = 0; i < w / 2; i++) {
+				for (int j = 0; j < h / 2; j++) {
+					Color corOld = pr.getColor(i, j);
+					pw.setColor(((w / 2) - 1) - i, ((h / 2) - 1) - j, corOld);
+				}
+			}
+		}
+
+		if (quad1 == 2.0 || quad2 == 2.0) {
+			// InverteSegundoQuadrante
+			int aux1 = 0;
+			for (int i = w / 2; i < w; i++) {
+				int aux2 = 0;
+				for (int j = 0; j < (h / 2); j++) {
+					Color corOld = pr.getColor(i, j);
+					pw.setColor((w - 1) - aux1, ((h / 2) - 1) - j, corOld);
+					aux2++;
+				}
+				aux1++;
+			}
+		}
+		
+		if (quad1 == 3.0 || quad2 == 3.0) {
+			// InverteTerceiroQuadrante
+			for (int i = 0; i < w / 2; i++) {
+				int aux = 0;
+				for (int j = h / 2; j < h; j++) {
+					Color corOld = pr.getColor(i, j);
+					pw.setColor(((w / 2) - 1) - i, (h - 1) - aux, corOld);
+					aux++;
+				}
+			}
+		}
+
+		if (quad1 == 4.0 || quad2 == 4.0) {
+			// InverteQuartoQuadrante
+			int aux = 0;
+			for (int i = w / 2; i < w; i++) {
+				int aux2 = 0;
+				for (int j = h / 2; j < h; j++) {
+					Color corOld = pr.getColor(i, j);
+					pw.setColor((w - 1) - aux, (h - 1) - aux2, corOld);
+					aux2++;
+				}
+				aux++;
+			}
+		}
+
+		return wi;
+	}
+
+	public static Image equalizacaoDiagonalPrincipal(Image imagem) {
+
+		int w = (int) imagem.getWidth();
+		int h = (int) imagem.getHeight();
+
+		Image imagemEqualizada = equalizacaoHistograma(imagem, false);
+
+		PixelReader pr = imagem.getPixelReader();
+		WritableImage wi = new WritableImage(w, h);
+		PixelWriter pw = wi.getPixelWriter();
+		Color corPreta = new Color(0, 0, 0, 1);
+
+		for (int i = 0; i < w - 1; i++) {
+			for (int j = 0; j < h - 1; j++) {
+				Color corA = pr.getColor(i, j);
+				if (i == j) {
+					pw.setColor(i, j, corPreta);
+				} else if (i > j) {
+					pw.setColor(i, j, imagemEqualizada.getPixelReader().getColor(i, j));
+				} else {
+					pw.setColor(i, j, corA);
+				}
+			}
+		}
+
+		return wi;
+	}
+
+	public static Image questao3(Image image) {
+		int w = (int) image.getWidth();
+		int h = (int) image.getHeight();
+		PixelReader pr = image.getPixelReader();
+		WritableImage wi = new WritableImage(w, h);
+		PixelWriter pw = wi.getPixelWriter();
+		Color corPreta = new Color(0, 0, 0, 1);
+		for (int i = 0; i < w; i++) {
+			for (int j = 0; j < h; j++) {
+				if (pr.getColor(0, 0) != corPreta) {
+					JOptionPane.showMessageDialog(null, "Tem abertura");
+				}
+			}
+		}
+		return null;
+	}
 }

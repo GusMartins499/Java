@@ -19,9 +19,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
    <children>
-      <BorderPane layoutY="-167.0" prefHeight="200.0" prefWidth="356.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutY="-167.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
@@ -34,7 +34,7 @@
             </HBox>
          </top>
          <left>
-            <VBox prefWidth="167.0" BorderPane.alignment="CENTER">
+            <VBox BorderPane.alignment="CENTER">
                <children>
                   <Accordion fx:id="AccordionMenu">
                     <panes>
@@ -42,14 +42,14 @@
                         <content>
                           <AnchorPane>
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cinzaAritmetica" text="Média aritmética" textAlignment="JUSTIFY">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Button>
-                                          <Separator prefWidth="200.0">
+                                          <Separator>
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
@@ -126,7 +126,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Label text="\% Transparência imagem 1">
                                              <VBox.margin>
@@ -138,7 +138,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Slider>
-                                          <Separator prefWidth="200.0">
+                                          <Separator>
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
@@ -153,22 +153,22 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Slider>
-                                          <Separator prefWidth="200.0">
+                                          <Separator>
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Separator>
-                                          <Button fx:id="btnAdicao" alignment="CENTER" mnemonicParsing="false" onAction="#adicao" prefHeight="50.0" prefWidth="130.0" text="Adição" textAlignment="JUSTIFY">
+                                          <Button fx:id="btnAdicao" alignment="CENTER" mnemonicParsing="false" onAction="#adicao" text="Adição" textAlignment="JUSTIFY">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Button>
-                                          <Separator prefWidth="200.0">
+                                          <Separator>
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Separator>
-                                          <Button fx:id="btnSubtracao" alignment="CENTER" layoutX="28.0" layoutY="191.0" mnemonicParsing="false" onAction="#subtracao" prefHeight="50.0" prefWidth="130.0" text="Subtração" textAlignment="JUSTIFY" />
+                                          <Button fx:id="btnSubtracao" alignment="CENTER" layoutX="28.0" layoutY="191.0" mnemonicParsing="false" onAction="#subtracao" text="Subtração" textAlignment="JUSTIFY" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -185,7 +185,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <RadioButton fx:id="rbVizinhoC" mnemonicParsing="false" text="VIZINHOS EM CRUZ">
                                              <VBox.margin>
@@ -205,7 +205,7 @@
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                              </VBox.margin>
                                           </RadioButton>
-                                          <Button fx:id="btnRuido" mnemonicParsing="false" onAction="#ruido" prefHeight="25.0" prefWidth="130.0" text="Eliminar ruídos">
+                                          <Button fx:id="btnRuido" mnemonicParsing="false" onAction="#ruido" text="Eliminar ruídos">
                                              <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                              </VBox.margin>
@@ -226,7 +226,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Label text="Equalização" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
@@ -236,7 +236,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" />
                                              </padding>
                                           </Label>
-                                          <Button fx:id="equalizacao" mnemonicParsing="false" onAction="#equalizacao" prefHeight="40.0" prefWidth="125.0" text="Aplicar" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="equalizacao" mnemonicParsing="false" onAction="#equalizacao" text="Aplicar" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
@@ -244,7 +244,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" />
                                              </padding>
                                           </Button>
-                                          <Separator prefWidth="200.0">
+                                          <Separator>
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
@@ -257,7 +257,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" />
                                              </padding>
                                           </Label>
-                                          <Button fx:id="equalizacaoValidos" mnemonicParsing="false" onAction="#equalizacaoValida" prefHeight="40.0" prefWidth="125.0" text="Aplicar" VBox.vgrow="ALWAYS">
+                                          <Button fx:id="equalizacaoValidos" mnemonicParsing="false" onAction="#equalizacaoValida" text="Aplicar" VBox.vgrow="ALWAYS">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
@@ -274,7 +274,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </TitledPane>
-                        <TitledPane animated="false" layoutX="10.0" layoutY="185.0" text="Desafio 1">
+                        <TitledPane animated="false" layoutX="10.0" layoutY="220.0" text="Desafio 1">
                            <content>
                               <AnchorPane>
                                  <padding>
@@ -286,6 +286,89 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
                                     </TextArea>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="10.0" layoutY="185.0" text="Questão 1">
+                           <content>
+                              <AnchorPane>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <children>
+                                    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="Inverter quadrante">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Slider fx:id="sliderInversao1" blockIncrement="1.0" majorTickUnit="1.0" max="4.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Slider>
+                                          <Label layoutX="15.0" layoutY="15.0" text="Inverter quadrante">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Slider fx:id="sliderInversao2" blockIncrement="1.0" layoutX="15.0" layoutY="42.0" majorTickUnit="1.0" max="4.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Slider>
+                                          <Button mnemonicParsing="false" onAction="#questao1" text="Inverter" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="10.0" layoutY="220.0" text="Questão 2">
+                           <content>
+                              <AnchorPane>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <children>
+                                    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#questao2" text="Aplicar">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding></Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="10.0" layoutY="290.0" text="Questão 3">
+                           <content>
+                              <AnchorPane>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <children>
+                                    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#questao3" text="Aplicar" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
                            </content>
@@ -307,7 +390,7 @@
          <center>
             <BorderPane BorderPane.alignment="CENTER">
                <left>
-                  <VBox maxWidth="300.0" minWidth="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                  <VBox BorderPane.alignment="CENTER">
                      <children>
                         <HBox>
                            <children>
@@ -321,7 +404,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                        <ScrollPane>
                           <content>
                             <AnchorPane fx:id="paneImg1">
                                  <children>
@@ -340,7 +423,7 @@
                   </VBox>
                </left>
                <center>
-                  <VBox maxWidth="300.0" minWidth="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                  <VBox BorderPane.alignment="CENTER">
                      <children>
                         <HBox>
                            <children>
@@ -354,7 +437,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                        <ScrollPane>
                           <content>
                             <AnchorPane fx:id="paneImg2">
                                  <padding>
@@ -373,7 +456,7 @@
                   </VBox>
                </center>
                <right>
-                  <VBox maxWidth="300.0" minWidth="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                  <VBox BorderPane.alignment="CENTER">
                      <children>
                         <HBox>
                            <children>
@@ -387,7 +470,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                        <ScrollPane>
                           <content>
                             <AnchorPane fx:id="paneImgResultado">
                                  <padding>
@@ -441,7 +524,7 @@
             </HBox>
          </bottom>
          <right>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="btnHistograma" mnemonicParsing="false" onAction="#abreModalHistograma" text="Histograma">
                      <VBox.margin>

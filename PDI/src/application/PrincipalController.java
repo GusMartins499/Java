@@ -10,7 +10,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
@@ -89,6 +88,11 @@ public class PrincipalController {
 	private Button equalizacao;
 	@FXML
 	private Button equalizacaoValidos;
+
+	@FXML
+	private Slider sliderInversao1;
+	@FXML
+	private Slider sliderInversao2;
 
 	private Image img1;
 	private Image img2;
@@ -325,8 +329,8 @@ public class PrincipalController {
 			stage.setTitle("Histograma");
 			// stage.initModality(Modality.WINDOW_MODAL);
 			stage.setResizable(true);
-			//stage.initOwner(((Node) event.getSource()).getScene().getWindow());
-			//stage.setMaximized(true);
+			// stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+			// stage.setMaximized(true);
 			stage.show();
 
 			HistogramaController controller = (HistogramaController) loader.getController();
@@ -352,6 +356,33 @@ public class PrincipalController {
 	public void equalizacaoValida() {
 		img3 = pdi.PDI.equalizacaoHistograma(img1, false);
 		atualizaImagem3();
+	}
+
+	@FXML
+	public double valorSliderInverso1() {
+		return sliderInversao1.getValue();
+	}
+
+	@FXML
+	public double valorSliderInverso2() {
+		return sliderInversao2.getValue();
+	}
+
+	@FXML
+	public void questao1() {
+		img3 = pdi.PDI.questao1(img1, valorSliderInverso1(), valorSliderInverso2());
+		atualizaImagem3();
+	}
+
+	@FXML
+	public void questao2() {
+		img3 = pdi.PDI.equalizacaoDiagonalPrincipal(img1);
+		atualizaImagem3();
+	}
+
+	@FXML
+	public void questao3() {
+		img1 = pdi.PDI.questao3(img1);
 	}
 
 }
